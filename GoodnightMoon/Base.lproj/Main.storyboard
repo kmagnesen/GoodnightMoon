@@ -67,6 +67,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="imageCollectionView" destination="6bA-yT-ZKT" id="K6I-bl-51R"/>
                         <outlet property="shadeView" destination="eM4-M8-7iu" id="v4k-kU-F3m"/>
                     </connections>
                 </viewController>

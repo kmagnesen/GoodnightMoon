@@ -9,12 +9,13 @@
 #import "ViewController.h"
 #import "ImageCollectionViewCell.h"
 
-@interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollisionBehaviorDelegate>
 
 @property NSMutableArray *moonImagesArray;
 @property NSMutableArray *sunImagesArray;
 @property NSMutableArray *currentImagesArray;
 
+@property (strong, nonatomic) IBOutlet UICollectionView *imageCollectionView;
 
 
 @property (strong, nonatomic) IBOutlet UIView *shadeView;
@@ -54,6 +55,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     self.dynamicAnimator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
 
     self.collisionBehavior = [[UICollisionBehavior alloc] initWithItems:[NSArray arrayWithObject:self.shadeView]];
@@ -75,6 +77,8 @@
     [self.dynamicAnimator addBehavior:self.gravityBehavior];
     [self.dynamicAnimator addBehavior:self.pushBehavior];
     [self.dynamicAnimator addBehavior:self.dynamicItemBehavior];
+
+    self.collisionBehavior.collisionDelegate = self;
 }
 
 - (IBAction) handlePan:(UIPanGestureRecognizer *)gesture {
@@ -122,6 +126,12 @@
     cell.imageView.image = [self.currentImagesArray objectAtIndex:indexPath.row];
     
     return cell;
+}
+
+- (void)collisionBehavior:(UICollisionBehavior *)behavior beganContactForItem:(id<UIDynamicItem>)item withBoundaryIdentifier:(id<NSCopying>)identifier atPoint:(CGPoint)p {
+
+    self.currentImagesArray = self.sunImagesArray;
+    [self.imageCollectionView reloadData];
 }
 
 @end
