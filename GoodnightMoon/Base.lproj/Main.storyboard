@@ -51,7 +51,7 @@
                             </collectionView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eM4-M8-7iu" userLabel="Shade View">
                                 <rect key="frame" x="0.0" y="-480" width="320" height="573"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.25098040699958801" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="WDj-qL-1yn" appends="YES" id="TU0-uR-SaD"/>
