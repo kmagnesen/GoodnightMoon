@@ -12,6 +12,7 @@
 @interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property NSMutableArray *moonImagesArray;
+@property (strong, nonatomic) IBOutlet UIView *shadeView;
 
 @end
 
@@ -28,6 +29,16 @@
     [self.moonImagesArray addObject:[UIImage imageNamed:@"moon_5"]];
     [self.moonImagesArray addObject:[UIImage imageNamed:@"moon_6"]];
 }
+
+- (IBAction) handlePan:(UIPanGestureRecognizer *)gesture {
+    CGPoint point = [gesture translationInView:gesture.view];
+    gesture.view.center = CGPointMake(gesture.view.center.x, gesture.view.center.y + point.y);
+    [gesture setTranslation:CGPointMake(0, 0) inView:gesture.view];
+
+}
+
+
+#pragma mark UICollectionViewDataSource
 
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.moonImagesArray.count;

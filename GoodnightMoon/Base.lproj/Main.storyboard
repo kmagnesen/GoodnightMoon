@@ -49,6 +49,14 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="AeB-b6-mIW"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eM4-M8-7iu" userLabel="Shade View">
+                                <rect key="frame" x="0.0" y="-480" width="320" height="573"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="WDj-qL-1yn" appends="YES" id="TU0-uR-SaD"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -58,8 +66,16 @@
                             <constraint firstItem="6bA-yT-ZKT" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="qZd-Hv-DH2"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="shadeView" destination="eM4-M8-7iu" id="v4k-kU-F3m"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="WDj-qL-1yn">
+                    <connections>
+                        <action selector="handlePan:" destination="vXZ-lx-hvc" id="Pho-PP-1ed"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="74" y="319"/>
         </scene>
